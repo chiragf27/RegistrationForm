@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Registration Form in HTML CSS</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="#" class="form" name="f1">
+        <div class="input-box">
+          <label>Full Name</label><label class="required"></label>
+          <input type="text" placeholder="Enter full name" name="name" id="name" onblur="nameentered()" required />
+        </div>
+
+        <div class="input-box">
+          <label>Email Address</label><label class="required"></label>
+          <input type="text" placeholder="Enter email address" name="email" id="email" onblur="emailentered()" required />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Phone Number</label><label class="required"></label>
+            <input type="number" placeholder="Enter phone number" name="phone" id="phone" onblur="validatePhone()" required />
+          </div>
+          <div class="input-box">
+            <label>Birth Date</label><label class="required"></label>
+            <input type="date" placeholder="Enter birth date" required />
+          </div>
+        </div>
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box address">
+          <label>Address</label><label class="required"></label>
+          <input type="text" placeholder="Enter street address" required />
+          <input type="text" placeholder="Enter street address line 2" required />
+          <div class="column">
+            <div class="select-box">
+              <select>
+                <option hidden>Country</option>
+                <option>America</option>
+                <option>Japan</option>
+                <option>India</option>
+                <option>Nepal</option>
+              </select>
+            </div>
+            <input type="text" placeholder="Enter your city" required />
+          </div>
+          <div class="column">
+            <input type="text" placeholder="Enter your region" required />
+            <input type="number" placeholder="Enter postal code" name="zipcode" id="zipcode" onblur="zipentered()" required />
+          </div>
+        </div>
+        <button>Submit</button>
+      </form>
+    </section>
+    <script type="text/javascript"> 
+      function nameentered() {
+                with(document.forms.f1){
+                    if(name.value == "") {
+                        alert("Please enter name");
+                    }
+                }
+            }
+            function emailentered() {
+              if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(f1.email.value)){
+                  return (true)
+                }
+                alert("You have entered an invalid email address!")
+                return (false)
+            }
+            function validatePhoneNumber(input_str) {
+              var re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+
+              return re.test(input_str);
+            }
+            function validatePhone(event) {
+              var phone = document.getElementById('phone').value;
+              if (!validatePhoneNumber(phone)) {
+                  alert('Please enter a valid phone number');
+              } 
+            }
+            function zipentered() {
+                with(document.forms.f1){
+                    if(zipcode.value == "") {
+                        alert('Please enter a zipcode');
+                    }
+                }
+            }
+    </script>
+  </body>
+</html>
